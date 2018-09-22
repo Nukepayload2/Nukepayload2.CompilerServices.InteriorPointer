@@ -63,7 +63,6 @@ Public Class TestInteriorPointer
             targetValue.G \= 2
             targetValue.B \= 2
         End If
-        ' 统一复制回去，不需要再写个 Select Case 语句了。
         pColor.UnsafePtrToByRef(Of MyColor) = targetValue
     End Sub
 
@@ -90,7 +89,6 @@ Public Class TestInteriorPointer
             targetValue.G \= 2
             targetValue.B \= 2
         End If
-        ' 统一复制回去，不需要再写个 Select Case 语句了。
         pColor.UnsafePtrToByRef = targetValue
     End Sub
 End Class
