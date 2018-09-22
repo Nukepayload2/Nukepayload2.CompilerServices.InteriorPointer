@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.CompilerServices", "Nukepayload2.CompilerServices\Nukepayload2.CompilerServices.vbproj", "{4808FD0F-64F7-4C9D-87CB-092BD8BED0C9}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.CompilerServices.Tests", "Nukepayload2.CompilerServices.Tests\Nukepayload2.CompilerServices.Tests.vbproj", "{E0A0D695-48AA-4339-B896-B7251AAC59A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4808FD0F-64F7-4C9D-87CB-092BD8BED0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4808FD0F-64F7-4C9D-87CB-092BD8BED0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4808FD0F-64F7-4C9D-87CB-092BD8BED0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4808FD0F-64F7-4C9D-87CB-092BD8BED0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0A0D695-48AA-4339-B896-B7251AAC59A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A0D695-48AA-4339-B896-B7251AAC59A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A0D695-48AA-4339-B896-B7251AAC59A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A0D695-48AA-4339-B896-B7251AAC59A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75E4E0FA-4217-4073-BDAA-33922A9B9D8C}
+	EndGlobalSection
+EndGlobal
