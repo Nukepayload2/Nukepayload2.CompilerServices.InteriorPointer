@@ -9,9 +9,6 @@
     <IL Include="**\*.il" Exclude="**\obj\**\*.il;**\bin\**\*.il" />
   </ItemGroup>
 
-  <ItemGroup>
-    <IL Remove="UnsafeHelper.il" />
-  </ItemGroup>
   <Target Name="ProcessILAfterCompile" AfterTargets="Compile">
     <CallTarget Targets="InitializeIL; CoreDecompile; CoreCompileIL" />
   </Target>

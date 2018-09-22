@@ -1,4 +1,6 @@
-﻿Public Structure InteriorPointer(Of T)
+﻿Imports Nukepayload2.CompilerServices.Unsafe
+
+Public Structure InteriorPointer(Of T)
     Implements IEquatable(Of InteriorPointer), IEquatable(Of InteriorPointer(Of T))
 
     Private Shared ReadOnly SizeOfElement As Integer = UnsafeHelper.SizeOf(Of T)
