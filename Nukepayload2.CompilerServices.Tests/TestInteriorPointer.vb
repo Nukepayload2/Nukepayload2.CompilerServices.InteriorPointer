@@ -1,4 +1,5 @@
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
+Imports Nukepayload2.CompilerServices.Tests
 Imports Nukepayload2.CompilerServices.Unsafe
 
 <TestClass>
@@ -143,4 +144,8 @@ End Structure
 
 Public Structure MyColorGroup
     Dim Color1, Color2 As MyColor
+End Structure
+
+Public Structure MyColorGroup4
+    Dim Color1, Color2, Color3, Color4 As MyColor
 End Structure

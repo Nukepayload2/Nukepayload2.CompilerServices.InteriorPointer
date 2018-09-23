@@ -75,6 +75,14 @@ Public Structure InteriorPointer(Of T)
         Return UnsafeOperators.IsLessThan(left.Value, right.Value)
     End Operator
 
+    Public Shared Operator >=(left As InteriorPointer(Of T), right As InteriorPointer(Of T)) As Boolean
+        Return Not UnsafeOperators.IsLessThan(left.Value, right.Value)
+    End Operator
+
+    Public Shared Operator <=(left As InteriorPointer(Of T), right As InteriorPointer(Of T)) As Boolean
+        Return Not UnsafeOperators.IsGreaterThan(left.Value, right.Value)
+    End Operator
+
     Public Shared Widening Operator CType(ptr As InteriorPointer(Of T)) As IntPtr
         Return ptr.Value
     End Operator
