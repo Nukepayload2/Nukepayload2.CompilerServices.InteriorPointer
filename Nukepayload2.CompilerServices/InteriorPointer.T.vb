@@ -3,7 +3,7 @@
 Public Structure InteriorPointer(Of T)
     Implements IEquatable(Of InteriorPointer), IEquatable(Of InteriorPointer(Of T))
 
-    Private Shared ReadOnly SizeOfElement As Integer = UnsafeHelper.SizeOf(Of T)
+    Private Shared ReadOnly SizeOfElement As Integer = UnsafeOperators.SizeOf(Of T)
 
     Private Value As IntPtr
 
@@ -65,6 +65,14 @@ Public Structure InteriorPointer(Of T)
 
     Public Shared Operator <>(left As InteriorPointer, right As InteriorPointer(Of T)) As Boolean
         Return left.Value <> right.Value
+    End Operator
+
+    Public Shared Operator >(left As InteriorPointer(Of T), right As InteriorPointer(Of T)) As Boolean
+        Return UnsafeOperators.IsGreaterThan(left.Value, right.Value)
+    End Operator
+
+    Public Shared Operator <(left As InteriorPointer(Of T), right As InteriorPointer(Of T)) As Boolean
+        Return UnsafeOperators.IsLessThan(left.Value, right.Value)
     End Operator
 
     Public Shared Widening Operator CType(ptr As InteriorPointer(Of T)) As IntPtr

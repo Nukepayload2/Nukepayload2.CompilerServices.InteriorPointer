@@ -1,4 +1,7 @@
-﻿Public Structure InteriorPointer
+﻿Imports System.Runtime.CompilerServices
+Imports Nukepayload2.CompilerServices.Unsafe
+
+Public Structure InteriorPointer
     Implements IEquatable(Of InteriorPointer)
 
     Friend Value As IntPtr
@@ -41,6 +44,14 @@
 
     Public Shared Operator <>(left As InteriorPointer, right As InteriorPointer) As Boolean
         Return left.Value <> right.Value
+    End Operator
+
+    Public Shared Operator >(left As InteriorPointer, right As InteriorPointer) As Boolean
+        Return UnsafeOperators.IsGreaterThan(left.Value, right.Value)
+    End Operator
+
+    Public Shared Operator <(left As InteriorPointer, right As InteriorPointer) As Boolean
+        Return UnsafeOperators.IsLessThan(left.Value, right.Value)
     End Operator
 
     Public Shared Widening Operator CType(ptr As InteriorPointer) As IntPtr

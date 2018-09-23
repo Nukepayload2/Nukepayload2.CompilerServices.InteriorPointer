@@ -22,10 +22,10 @@ Namespace Unsafe
         Public Function UnsafePtrToByRef(Of TValue)(ptr As InteriorPointer) As TValue ' ByRef TValue
         End Function
 
+        ' Do not use it in the current project.
         <Extension>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
         Public Function UnsafePtrToByRef(Of TValue)(ptr As InteriorPointer(Of TValue)) As TValue ' ByRef TValue
         End Function
-
     End Module
 End Namespace
