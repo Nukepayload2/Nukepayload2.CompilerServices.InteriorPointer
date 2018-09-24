@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 Imports Nukepayload2.CompilerServices
 Imports Nukepayload2.CompilerServices.Unsafe
 
-Public Module Grisu
+Module Grisu
     Public Function ToString(value As Double) As String
         Dim result = TryFormat(value)
         If result Is Nothing Then

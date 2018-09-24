@@ -65,6 +65,9 @@ Namespace Unsafe
 
         ''' <summary>
         ''' This property is used to translate the value = *pointer and the *pointer = value expression.
+        ''' <para>
+        ''' This property won't work when <typeparamref name="T"/> is <see langword="Class"/>, <see langword="Interface"/>, or <see langword="Structure"/> with field of reference type.
+        ''' </para>
         ''' </summary>
         Public Property UnmanagedItem As T
             <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
@@ -77,6 +80,9 @@ Namespace Unsafe
 
         ''' <summary>
         ''' This method is used to translate the *pointer = value expression.
+        ''' <para>
+        ''' This method won't work when <typeparamref name="T"/> is <see langword="Class"/>, <see langword="Interface"/>, or <see langword="Structure"/> with field of reference type.
+        ''' </para>
         ''' </summary>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
         Public Sub SetUnmanagedItem(value As T)

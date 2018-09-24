@@ -4,6 +4,9 @@ Namespace Unsafe
 
     Public Module UnsafeOperators
 #Disable Warning BC42353
+        ''' <summary>
+        ''' Gets the size of a type.
+        ''' </summary>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
         Friend Function SizeOf(Of T)() As Integer
         End Function
