@@ -17,8 +17,7 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Demo.GrisuVB", "Demo.GrisuV
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90C57A95-9947-4692-88A9-F5E122AE0377}"
 	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-		Performance2.psess = Performance2.psess
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

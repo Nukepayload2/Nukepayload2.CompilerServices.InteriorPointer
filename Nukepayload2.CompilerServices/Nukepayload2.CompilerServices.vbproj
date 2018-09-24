@@ -11,15 +11,16 @@
     <PackageLicenseUrl>https://github.com/Nukepayload2/Nukepayload2.CompilerServices.InteriorPointer/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides functionality for manipulating interior pointers with VB.
 - Convert ByRef to interior pointer, or convert interior pointer back to ByRef.
+- Load or store unmanaged values indirectly.
 - No extra dependencies.
-- Supports add, subtract, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
+- Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
 - Provides helper functions for easier code conversion from C# or C++ to VB.</Description>
     <PackageId>Nukepayload2.CompilerServices.InteriorPointer</PackageId>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref</PackageTags>
     <Version>1.0.0-beta2</Version>
-    <PackageReleaseNotes>Initial commit.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added more helper methods.</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
   </PropertyGroup>
 
