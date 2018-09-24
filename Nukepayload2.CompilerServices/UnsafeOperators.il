@@ -1,17 +1,14 @@
-﻿// Friend Class UnsafeHelper
-.class private auto ansi Nukepayload2.CompilerServices.Unsafe.UnsafeOperators
+﻿.class public auto ansi Nukepayload2.CompilerServices.Unsafe.UnsafeOperators
     extends [netstandard]System.Object
 {
-    // Public Shared Function SizeOf(Of T)() As Integer
-	.method public static int32 SizeOf<T> () cil managed aggressiveinlining 
+	.method assembly static int32 SizeOf<T> () cil managed aggressiveinlining 
     {
         .maxstack 1
         sizeof !!T
         ret
     } // End Function
 
-	// Public Shared Function IsGreaterThan(ptr1 As IntPtr, ptr2 As IntPtr) As Boolean
-    .method public static bool IsGreaterThan (
+    .method assembly static bool IsGreaterThan (
             native int ptr1,
             native int ptr2
         ) cil managed aggressiveinlining 
@@ -23,8 +20,7 @@
         ret
     } // End Function
 	
-	// Public Shared Function IsLessThan(ptr1 As IntPtr, ptr2 As IntPtr) As Boolean
-    .method public static bool IsLessThan (
+    .method assembly static bool IsLessThan (
             native int ptr1,
             native int ptr2
         ) cil managed aggressiveinlining 

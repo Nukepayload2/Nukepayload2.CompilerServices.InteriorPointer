@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
+﻿Imports System.Runtime.InteropServices
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Nukepayload2.CompilerServices.Unsafe
 
 <TestClass>
@@ -93,4 +94,47 @@ Public Class TestUnsafeHelper
         Assert.AreEqual(red, group.Color4)
     End Sub
 
+    <TestMethod>
+    Public Sub TestToString()
+        Dim str = "https://github.com/Nukepayload2"
+        Dim arr = (str + vbNullChar).ToCharArray
+        Dim strPtr As InteriorPointer(Of Char) = Marshal.UnsafeAddrOfPinnedArrayElement(arr, 0)
+        strPtr += 8
+        Dim newStr = strPtr.UnsafeToString
+        Assert.AreEqual(str.Substring(8), newStr)
+    End Sub
+
+    <TestMethod>
+    Public Sub TestIncrement()
+        Dim p1 As New InteriorPointer(Of Char)
+        Dim p2 As New InteriorPointer(Of Char)
+        p1 = Nothing
+        p2 = p1.GetAndIncrement
+        Assert.IsFalse(p1.IsZero)
+        Assert.IsTrue(p2.IsZero)
+        p1 = Nothing
+        p2 = p1.IncrementAndGet
+        Assert.IsFalse(p1.IsZero)
+        Assert.IsFalse(p2.IsZero)
+    End Sub
+
+    <TestMethod>
+    Public Sub TestRead()
+        Dim str = "https://github.com/Nukepayload2"
+        Dim arr = (str + vbNullChar).ToCharArray
+        Dim strPtr As InteriorPointer(Of Char) = Marshal.UnsafeAddrOfPinnedArrayElement(arr, 0)
+        strPtr += 8
+        Dim g = strPtr.UnmanagedItem
+        Assert.AreEqual("g"c, g)
+    End Sub
+
+    <TestMethod>
+    Public Sub TestWrite()
+        Dim str = "https://github.com/Nukepayload2"
+        Dim arr = (str + vbNullChar).ToCharArray
+        Dim strPtr As InteriorPointer(Of Char) = Marshal.UnsafeAddrOfPinnedArrayElement(arr, 0)
+        strPtr += 8
+        strPtr.UnmanagedItem = "G"c
+        Assert.AreEqual("G"c, strPtr.UnmanagedItem)
+    End Sub
 End Class

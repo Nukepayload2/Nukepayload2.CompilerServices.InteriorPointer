@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Demo.GrisuVB</RootNamespace>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <OptionStrict>On</OptionStrict>
+    <NoWarn />
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Nukepayload2.CompilerServices">
+      <HintPath>..\Nukepayload2.CompilerServices\bin\Release\netstandard2.0\Nukepayload2.CompilerServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

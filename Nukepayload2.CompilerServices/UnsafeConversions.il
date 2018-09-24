@@ -43,7 +43,7 @@
   } // End Function
   
   // Public Function UnsafeByRefToPtr(Of TValue)(ByRef value As TValue) As InteriorPointer(Of TValue)
-  .method public static valuetype Nukepayload2.CompilerServices.InteriorPointer`1<!!TValue> UnsafeByRefToTypedPtr<TValue> (
+  .method public static valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!!TValue> UnsafeByRefToTypedPtr<TValue> (
       !!TValue& 'value'
   ) cil managed aggressiveinlining 
   {
@@ -52,7 +52,7 @@
     )
     .maxstack 1
     .locals init (
-      [0] valuetype Nukepayload2.CompilerServices.InteriorPointer`1<!!TValue> V_0
+      [0] valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!!TValue> V_0
     )
     ldarg.0
     // Roundtrip via a local to avoid type mismatch on return that the JIT inliner chokes on.
@@ -82,7 +82,7 @@
 
   // ByRef Public Function UnsafePtrToByRef(Of TValue)(ptr As InteriorPointer(Of T)) As TValue
   .method public static !!TValue& UnsafePtrToByRef<TValue> (
-      valuetype Nukepayload2.CompilerServices.InteriorPointer`1<!!TValue> ptr
+      valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!!TValue> ptr
   ) cil managed aggressiveinlining 
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
@@ -98,4 +98,23 @@
     ldloc.0
     ret
   } // End Function
+
+  .method public static string UnsafeToString (
+      valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char> ptr
+  ) cil managed aggressiveinlining 
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+        01 00 00 00
+    )
+    .locals init (
+        [0] void* addr
+    )
+	.maxstack 1
+    ldarg.0
+	ldfld native int valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char>::Value
+	stloc.0
+	ldloc.0
+	newobj instance void [netstandard]System.String::.ctor(char*)
+	ret
+  }
 } // End Module

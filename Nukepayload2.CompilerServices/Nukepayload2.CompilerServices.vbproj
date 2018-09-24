@@ -18,8 +18,18 @@
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref</PackageTags>
-    <Version>1.0.0-beta1</Version>
+    <Version>1.0.0-beta2</Version>
     <PackageReleaseNotes>Initial commit.</PackageReleaseNotes>
+    <Copyright>Copyright 2018 Nukepayload2</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DocumentationFile>Nukepayload2.CompilerServices.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Nukepayload2.CompilerServices.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
