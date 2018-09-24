@@ -25,19 +25,16 @@ Friend Structure StackStringBuilder
     End Sub
 
     Public Sub Append(buf As InteriorPointer(Of Char), length As Integer)
-        Dim pCurrent = buf
-        Dim pEnd = buf + length
-        Do While pCurrent < pEnd
-            _currentPosition.GetAndIncrement.CopyUnmanagedFrom(pCurrent.GetAndIncrement)
-        Loop
+        For i = 0 To length - 1
+            _currentPosition.GetAndIncrement.CopyUnmanagedFrom(buf.GetAndIncrement)
+        Next
     End Sub
 
     Public Sub Append(buf As InteriorPointer(Of Char), startIndex As Integer, length As Integer)
         Dim pCurrent = buf + startIndex
-        Dim pEnd = pCurrent + length
-        Do While pCurrent < pEnd
+        For i = 0 To length - 1
             _currentPosition.GetAndIncrement.CopyUnmanagedFrom(pCurrent.GetAndIncrement)
-        Loop
+        Next
     End Sub
 
     Public Overloads Function ToString() As String

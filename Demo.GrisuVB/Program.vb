@@ -4,7 +4,7 @@ Module Program
     Sub Main(args As String())
         With New Stopwatch
             Const Count = 1000_0000
-            Dim values = {0, 0.123456, -0.123456, 234567.89, -234567.89, 1 / 3, -1 / 3, 1.23E+245, 1.23456E-45, -1.23E+45, -1.23E-45, -1.23E-9}
+            Dim values = {0, 0.123456, -0.123456, 234567.89, -234567.89, 1 / 3, -1 / 3, 1.23E+245, 1.23456E-45, -1.23E+45, -1.23E-45, -0.00000000123}
             Dim result As String = Nothing
             For Each value In values
                 Console.WriteLine($"===========    {value}    ===========")
