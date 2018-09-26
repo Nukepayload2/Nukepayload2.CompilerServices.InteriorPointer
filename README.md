@@ -69,7 +69,7 @@ __VB__
 ```VB
 Dim values(4095) As Char
 Using pinPtr = Fixed(values)
-    Dim chrBuf = arr(0).UnsafeByRefToTypedPtr
+    Dim chrBuf = pinPtr.Pointer
     ' use chrBuf
 End Using
 ```

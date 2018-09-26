@@ -15,9 +15,15 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)'=='Release'">
     <Reference Include="Nukepayload2.CompilerServices">
       <HintPath>..\Nukepayload2.CompilerServices\bin\Release\netstandard2.0\Nukepayload2.CompilerServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)'=='Debug'">
+    <Reference Include="Nukepayload2.CompilerServices">
+      <HintPath>..\Nukepayload2.CompilerServices\bin\Debug\netstandard2.0\Nukepayload2.CompilerServices.dll</HintPath>
     </Reference>
   </ItemGroup>
 
