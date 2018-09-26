@@ -2,6 +2,9 @@
 .class public auto ansi sealed Nukepayload2.CompilerServices.Unsafe.UnsafeConversions
        extends [netstandard]System.Object
 {
+  .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+      01 00 00 00
+  )
   .custom instance void Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute::.ctor() = ( 01 00 00 00 ) 
   
   // Public Function UnsafeStaticCast(Of TValue, TResult)(value As TValue) As TResult
