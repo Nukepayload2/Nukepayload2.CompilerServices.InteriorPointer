@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.ComponentModel
+Imports System.Runtime.CompilerServices
 
 Namespace Unsafe
 
@@ -8,41 +9,48 @@ Namespace Unsafe
     ''' <para>
     ''' Caution: <see cref="InteriorPointer(Of T)"/> may not work normally when used as 
     ''' the data type of an array element,
-    ''' field,
+    ''' field of class,
+    ''' field of structure which is a field of class (directly or indirectly),
     ''' anonymous type member,
     ''' <see langword="Async"/> <see langword="Function"/> locals or argument,
     ''' <see langword="Async"/> <see langword="Sub"/> locals or argument,
     ''' <see langword="Iterator"/> <see langword="Function"/> locals or argument,
-    ''' generic type argument,
     ''' lambda expression locals or argument,
     ''' anonymous delegate locals or argument,
-    ''' locals of type (<see cref="Object"/>, <see cref="IEquatable(Of T)"/> or <see cref="ValueTuple"/>),
-    ''' or parameter of type (<see cref="Object"/>, <see cref="IEquatable(Of T)"/> or <see cref="ValueTuple"/>).
+    ''' locals of type (<see cref="Object"/> or <see cref="ValueType"/>),
+    ''' or parameter of type (<see cref="Object"/> or <see cref="ValueType"/>).
     ''' </para>
     ''' </summary>
     Public Structure InteriorPointer(Of T)
-        Implements IEquatable(Of InteriorPointer), IEquatable(Of InteriorPointer(Of T))
-
         Friend Value As IntPtr
 
         Private Sub New(value As IntPtr)
             Me.Value = value
         End Sub
 
-        Public Overloads Function Equals(other As InteriorPointer(Of T)) As Boolean Implements IEquatable(Of InteriorPointer(Of T)).Equals
+        ''' <summary>
+        ''' Invalidates the pointer.
+        ''' </summary>
+        Friend Sub SetNothing()
+            Value = Nothing
+        End Sub
+
+        Public Overloads Function Equals(other As InteriorPointer(Of T)) As Boolean
             Return Value = other.Value
         End Function
 
-        Public Overloads Function Equals(other As InteriorPointer) As Boolean Implements IEquatable(Of InteriorPointer).Equals
+        Public Overloads Function Equals(other As InteriorPointer) As Boolean
             Return Value = other.Value
         End Function
 
+        <EditorBrowsable(EditorBrowsableState.Never)>
         Public Overrides Function Equals(obj As Object) As Boolean
-            Return TypeOf obj Is InteriorPointer AndAlso DirectCast(obj, InteriorPointer).Equals(Me)
+            Throw New NotSupportedException("You can't call this method on interior pointer.")
         End Function
 
+        <EditorBrowsable(EditorBrowsableState.Never)>
         Public Overrides Function GetHashCode() As Integer
-            Return Value.GetHashCode
+            Throw New NotSupportedException("You can't call this method on interior pointer.")
         End Function
 
         ''' <summary>

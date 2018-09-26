@@ -68,6 +68,7 @@ Module Grisu
             Return Nothing
         End If
 
+        Debug.Assert(decimal_rep_length < 18)
         Dim decimalRepLength As Integer = decimal_rep_length
         If decimal_point < 1 Then
             decimalRepLength += -decimal_point + 1

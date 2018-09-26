@@ -98,10 +98,17 @@ Public Class TestUnsafeHelper
     Public Sub TestToString()
         Dim str = "https://github.com/Nukepayload2"
         Dim arr = (str + vbNullChar).ToCharArray
-        Dim strPtr As InteriorPointer(Of Char) = Marshal.UnsafeAddrOfPinnedArrayElement(arr, 0)
-        strPtr += 8
-        Dim newStr = strPtr.UnsafeToString
-        Assert.AreEqual(str.Substring(8), newStr)
+#Disable Warning BC42351
+        ' Local variable is read-only and its type is a structure. 
+        ' Invoking its members Or passing it ByRef does Not change its content And might lead to unexpected results. 
+        ' Consider declaring this variable outside of the 'Using' block.
+        Using pinPtr = Fixed(arr)
+#Enable Warning
+            Dim strPtr = pinPtr.Pointer
+            strPtr += 8
+            Dim newStr = strPtr.UnsafeToString
+            Assert.AreEqual(str.Substring(8), newStr)
+        End Using
     End Sub
 
     <TestMethod>

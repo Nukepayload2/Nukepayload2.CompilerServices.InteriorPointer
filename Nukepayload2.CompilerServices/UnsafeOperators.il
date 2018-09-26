@@ -1,7 +1,7 @@
 ﻿.class public auto ansi Nukepayload2.CompilerServices.Unsafe.UnsafeOperators
     extends [netstandard]System.Object
 {
-	.method assembly static int32 SizeOf<T> () cil managed aggressiveinlining 
+	.method public static int32 SizeOf<T> () cil managed aggressiveinlining 
     {
         .maxstack 1
         sizeof !!T

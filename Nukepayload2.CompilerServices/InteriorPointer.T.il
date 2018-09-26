@@ -78,7 +78,7 @@
         dup // Me, ByRef Me.Value, ByRef Me.Value
         ldind.i // Me, ByRef Me.Value, Me.Value
         sizeof !T // Me, ByRef Me.Value, Me.Value, size
-        call native int [netstandard]System.IntPtr::op_Subtraction(native int,  int32) // Me, ByRef Me.Value, Me.Value + size
+        call native int [netstandard]System.IntPtr::op_Subtraction(native int,  int32) // Me, ByRef Me.Value, Me.Value - size
         stind.i // Me
         ret
     }
@@ -92,7 +92,7 @@
         dup // ByRef Me.Value, ByRef Me.Value
         ldind.i // ByRef Me.Value, Me.Value
         sizeof !T // ByRef Me.Value, Me.Value, size
-        call native int [netstandard]System.IntPtr::op_Subtraction(native int,  int32) // ByRef Me.Value, Me.Value + size
+        call native int [netstandard]System.IntPtr::op_Subtraction(native int,  int32) // ByRef Me.Value, Me.Value - size
         stind.i //
         ldarg.0 // Me^
         ldobj valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!T> // Me

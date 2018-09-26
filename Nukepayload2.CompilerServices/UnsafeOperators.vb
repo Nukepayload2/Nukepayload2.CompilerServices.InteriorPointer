@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports System.Runtime.InteropServices
 
 Namespace Unsafe
 
@@ -8,7 +9,7 @@ Namespace Unsafe
         ''' Gets the size of a type.
         ''' </summary>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
-        Friend Function SizeOf(Of T)() As Integer
+        Public Function SizeOf(Of T)() As Integer
         End Function
 
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
@@ -20,6 +21,16 @@ Namespace Unsafe
         End Function
 
 #Enable Warning BC42353
+
+        Public Function Fixed(Of T)(arr As T()) As PinnedPointer(Of T)
+            Dim hGc = GCHandle.Alloc(arr, GCHandleType.Pinned)
+            Return New PinnedPointer(Of T)(arr(0).UnsafeByRefToTypedPtr, hGc)
+        End Function
+
+        Public Function Fixed(Of T)(arr As T(), startIndex As Integer) As PinnedPointer(Of T)
+            Dim hGc = GCHandle.Alloc(arr, GCHandleType.Pinned)
+            Return New PinnedPointer(Of T)(arr(startIndex).UnsafeByRefToTypedPtr, hGc)
+        End Function
     End Module
 
 End Namespace

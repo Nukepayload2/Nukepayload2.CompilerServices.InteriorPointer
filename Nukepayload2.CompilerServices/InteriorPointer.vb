@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.CompilerServices.Unsafe
+﻿Imports System.ComponentModel
+Imports Nukepayload2.CompilerServices.Unsafe
 
 ''' <summary>
 ''' The non-typed interior pointer.
@@ -6,37 +7,37 @@
 ''' <para>
 ''' Caution: <see cref="InteriorPointer"/> may not work normally when used as 
 ''' the data type of an array element,
-''' field,
+''' field of class,
+''' field of structure which is a field of class (directly or indirectly),
 ''' anonymous type member,
 ''' <see langword="Async"/> <see langword="Function"/> locals or argument,
 ''' <see langword="Async"/> <see langword="Sub"/> locals or argument,
 ''' <see langword="Iterator"/> <see langword="Function"/> locals or argument,
-''' generic type argument,
 ''' lambda expression locals or argument,
 ''' anonymous delegate locals or argument,
-''' locals of type (<see cref="Object"/>, <see cref="IEquatable(Of InteriorPointer)"/> or <see cref="ValueTuple"/>),
-''' or parameter of type (<see cref="Object"/>, <see cref="IEquatable(Of InteriorPointer)"/> or <see cref="ValueTuple"/>).
+''' locals of type (<see cref="Object"/> or <see cref="ValueType"/>),
+''' or parameter of type (<see cref="Object"/> or <see cref="ValueType"/>).
 ''' </para>
 ''' </summary>
 Public Structure InteriorPointer
-    Implements IEquatable(Of InteriorPointer)
-
     Friend Value As IntPtr
 
     Friend Sub New(value As IntPtr)
         Me.Value = value
     End Sub
 
-    Public Overloads Function Equals(other As InteriorPointer) As Boolean Implements IEquatable(Of InteriorPointer).Equals
+    Public Overloads Function Equals(other As InteriorPointer) As Boolean
         Return Value = other.Value
     End Function
 
+    <EditorBrowsable(EditorBrowsableState.Never)>
     Public Overrides Function Equals(obj As Object) As Boolean
-        Return TypeOf obj Is InteriorPointer AndAlso DirectCast(obj, InteriorPointer).Equals(Me)
+        Throw New NotSupportedException("You can't call this method on interior pointer.")
     End Function
 
+    <EditorBrowsable(EditorBrowsableState.Never)>
     Public Overrides Function GetHashCode() As Integer
-        Return Value.GetHashCode
+        Throw New NotSupportedException("You can't call this method on interior pointer.")
     End Function
 
     ''' <summary>
