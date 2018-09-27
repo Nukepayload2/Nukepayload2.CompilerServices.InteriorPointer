@@ -144,4 +144,31 @@ Public Class TestUnsafeHelper
         strPtr.UnmanagedItem = "G"c
         Assert.AreEqual("G"c, strPtr.UnmanagedItem)
     End Sub
+
+    <TestMethod>
+    Public Sub TestStrPtr()
+        Dim str = "https://github.com/Nukepayload2"
+#Disable Warning BC42351
+        ' Local variable is read-only and its type is a structure. 
+        ' Invoking its members Or passing it ByRef does Not change its content And might lead to unexpected results. 
+        ' Consider declaring this variable outside of the 'Using' block.
+        Using hStr = StrPtr(str)
+#Enable Warning
+            Dim pStr = hStr.Pointer
+            Assert.AreEqual("h"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("t"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("t"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("p"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("s"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual(":"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("/"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("/"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("g"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("i"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("t"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("h"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("u"c, pStr.GetAndIncrement.UnmanagedItem)
+            Assert.AreEqual("b"c, pStr.GetAndIncrement.UnmanagedItem)
+        End Using
+    End Sub
 End Class

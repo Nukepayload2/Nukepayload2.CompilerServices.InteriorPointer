@@ -32,4 +32,24 @@
         ret
     } // End Function
 
+	.method private static valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char> 
+        StrPtrInternal(string str) cil managed aggressiveinlining
+	{
+	    .maxstack 2
+	    .locals init (
+			[0] string pinned sp,
+			[1] valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char> result
+		)
+
+        ldarg.0
+		stloc.0
+		ldloc.0
+        conv.u
+        call int32 [netstandard]System.Runtime.CompilerServices.RuntimeHelpers::get_OffsetToStringData()
+        add
+        stloc.1
+        ldloc.1
+        ret
+	} // End Function
+
 } // End Class

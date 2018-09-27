@@ -20,8 +20,10 @@
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref</PackageTags>
     <Version>1.0.0-beta3</Version>
-    <PackageReleaseNotes>Added more helper methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added pinned pointer.</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

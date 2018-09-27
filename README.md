@@ -7,12 +7,13 @@ Provides functionality for manipulating interior pointers with VB.
 - Load or store unmanaged values indirectly.
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
-- Provides helper functions for easier code conversion from C# or C++ to VB.
+- Provides helper functions for easier code conversion from C#, C++, VB6 or VBA to VB.NET.
 
 ## Scenarios
 - Don't want to see small c# projects among your huge VB solution.
 - Prefer VB syntax and want to implement pointer algorithms.
 - Want to convert c# codes that contains `Span(Of T)` without marking everything `<Obsolete>`.
+- Want to bring VB 6 or VBA codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
 ### C-style operators vs InteriorPointer members
@@ -29,6 +30,7 @@ Provides functionality for manipulating interior pointers with VB.
 |`var p = (T*)Unsafe.AsPointer(ref r);`|Converts ref to raw pointer|`Dim p = r.UnsafeByRefToTypedPtr`|
 |`ref T r = Unsafe.AsRef<T>((void*)p);`|p is IntPtr|`Dim r = CType(p, InteriorPointer(Of T))`|
 |`T r = Unsafe.AsRef<T>((void*)p);`|p is IntPtr|`Dim r = p.UnsafePtrToByRef(Of T)`|
+|`T* r = &p;`|p is structure or T is pinned|`Dim r = VarPtr(p)`|
 |`*p1 = *p2;`|p1 is a pointer of an unmanaged type|`p1.CopyUnmanagedFrom(p2)`|
 |`p+=2`|p is void*|`p+=2`|
 |`p-=2`|p is void*|`p-=2`|
@@ -40,6 +42,10 @@ Provides functionality for manipulating interior pointers with VB.
 |`p1 >= p2`|p1 is pointer|`p1 >= p2`|
 |`p1 = (void*)p2`|p1 is pointer|`p1 = CType(p2, InteriorPointer)`|
 |`p1 = (T*)p2`|p1 is pointer|`p1 = CType(p2, InteriorPointer(Of T))`|
+
+|C++ sample code|Remarks|InteriorPointer with VB|
+|-|-|-|
+|`auto u = static_cast<unsigned int>(signedValue)`|Converts objects that has the same size and memory layout.|Dim u = signedValue.UnsafeStaticCast(Of UInteger)|
 
 ### C# pointer keywords to VB with InteriorPointer
 #### stackalloc
@@ -57,6 +63,8 @@ Dim chrBuf = CType(resultBufValue.UnsafeByRefToPtr, InteriorPointer(Of Char))
 ```
 
 #### fixed
+##### Fixed array
+
 __C#__
 ```C#
 char[] values = new char[4096];
@@ -69,6 +77,26 @@ __VB__
 ```VB
 Dim values(4095) As Char
 Using pinPtr = Fixed(values)
+    Dim chrBuf = pinPtr.Pointer
+    ' use chrBuf
+End Using
+```
+
+##### Fixed string
+
+__C#__
+```C#
+var values = new string('0', 4096);
+fixed(char* chrBuf = values)
+{
+    // use chrBuf
+}
+```
+
+__VB__
+```VB
+Dim values As New String("0"c, 4096)
+Using pinPtr = StrPtr(values)
     Dim chrBuf = pinPtr.Pointer
     ' use chrBuf
 End Using
