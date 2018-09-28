@@ -26,6 +26,10 @@ Public Structure InteriorPointer
         Me.Value = value
     End Sub
 
+    Friend Sub SetNothing()
+        Value = Nothing
+    End Sub
+
     Public Overloads Function Equals(other As InteriorPointer) As Boolean
         Return Value = other.Value
     End Function

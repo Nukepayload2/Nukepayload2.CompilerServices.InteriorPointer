@@ -43,14 +43,22 @@ Namespace Unsafe
         ''' </summary>
         ''' <remarks>Welcome back, VarPtr! </remarks>
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
-        Public Function VarPtr(Of TVariable)(ByRef variable As TVariable) As InteriorPointer(Of TVariable)
+        Public Function VarPtr(Of T)(ByRef variable As T) As InteriorPointer(Of T)
             Return UnsafeByRefToTypedPtr(variable)
+        End Function
+
+        ''' <summary>
+        ''' Pins the specified object and then gets its address.
+        ''' </summary>
+        Public Function ObjPtr(Of T As Class)(variable As T) As PinnedPointer
+            Dim hGc = GCHandle.Alloc(variable, GCHandleType.Pinned)
+            Dim pPtr = variable.UnsafeStaticCast(Of IntPtr)
+            Return New PinnedPointer(CType(pPtr, InteriorPointer), hGc)
         End Function
 
         ''' <summary>
         ''' Pins the specified string and gets a pointer to its first character.
         ''' </summary>
-        ''' <remarks>Welcome back, StrPtr! </remarks>
         Public Function StrPtr(str As String) As PinnedPointer(Of Char)
             Dim hGc = GCHandle.Alloc(str, GCHandleType.Pinned)
             Dim pPtr = StrPtrInternal(str)

@@ -20,10 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Demo.ClassicVBPtr", "Demo.ClassicVBPtr\Demo.ClassicVBPtr.vbproj", "{3E71654F-928A-4389-9B87-BFFF8D40BF75}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -41,12 +40,19 @@ Global
 		{D734FF42-1B8F-4ED5-86A1-4D105819D431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D734FF42-1B8F-4ED5-86A1-4D105819D431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D734FF42-1B8F-4ED5-86A1-4D105819D431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E71654F-928A-4389-9B87-BFFF8D40BF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E71654F-928A-4389-9B87-BFFF8D40BF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E71654F-928A-4389-9B87-BFFF8D40BF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E71654F-928A-4389-9B87-BFFF8D40BF75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75E4E0FA-4217-4073-BDAA-33922A9B9D8C}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
