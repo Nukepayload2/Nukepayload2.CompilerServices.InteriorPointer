@@ -6,7 +6,8 @@ Namespace Unsafe
     Public Module UnsafeOperators
 #Disable Warning BC42353
         ''' <summary>
-        ''' Gets the size of a type.
+        ''' Gets the size of a type. If the type is value type, returns the size of its value.
+        ''' If the type is reference type, returns the size of <see cref="IntPtr"/>.
         ''' </summary>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
         Public Function SizeOf(Of T)() As Integer
@@ -41,14 +42,14 @@ Namespace Unsafe
         ''' <summary>
         ''' Gets the address of an local variable.
         ''' </summary>
-        ''' <remarks>Welcome back, VarPtr! </remarks>
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Function VarPtr(Of T)(ByRef variable As T) As InteriorPointer(Of T)
             Return UnsafeByRefToTypedPtr(variable)
         End Function
 
         ''' <summary>
-        ''' Pins the specified object and then gets its address.
+        ''' Pins the specified reference type and then gets its reference as <see cref="IntPtr"/>.
+        ''' This method is less useful than in classic VB.
         ''' </summary>
         Public Function ObjPtr(Of T As Class)(variable As T) As PinnedPointer
             Dim hGc = GCHandle.Alloc(variable, GCHandleType.Pinned)
