@@ -7,13 +7,13 @@ Provides functionality for manipulating interior pointers with VB.
 - Load or store unmanaged values indirectly.
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
-- Provides helper functions for easier code conversion from C#, C++, VB6 or VBA to VB.NET.
+- Provides helper functions for easier code conversion from C#, C++, or Classic VB to VB.NET.
 
 ## Scenarios
 - Don't want to see small c# projects among your huge VB solution.
 - Prefer VB syntax and want to implement pointer algorithms.
 - Want to convert c# codes that contains `Span(Of T)` without marking everything `<Obsolete>`.
-- Want to bring VB 6 or VBA codes which have `VarPtr` and `StrPtr` to .NET.
+- Want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
 ### C-style operators vs InteriorPointer members

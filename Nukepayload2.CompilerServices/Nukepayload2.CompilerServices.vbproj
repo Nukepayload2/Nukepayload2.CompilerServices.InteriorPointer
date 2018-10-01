@@ -14,7 +14,7 @@
 - Load or store unmanaged values indirectly.
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
-- Provides helper functions for easier code conversion from C# or C++ to VB.</Description>
+- Provides helper functions for easier code conversion from C#, C++, or Classic VB to VB.NET.</Description>
     <PackageId>Nukepayload2.CompilerServices.InteriorPointer</PackageId>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>

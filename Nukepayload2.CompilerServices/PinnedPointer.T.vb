@@ -6,8 +6,7 @@ Namespace Unsafe
     ''' Contains a <see cref="InteriorPointer(Of T)"/> and a <see cref="GCHandle"/> that pins the pointer's target object. 
     ''' This type is used to translate the <see langword="fixed"/> block.
     ''' <para>
-    ''' Caution: 1. This structure has the same restrictions as <see cref="InteriorPointer"/>. 2. Please use this type with <see cref="UnsafeOperators.Fixed(Of T)(T())"/> or <see cref="UnsafeOperators.Fixed(Of T)(T(), Integer)"/> 
-    ''' and the <see langword="Using"/> statement.
+    ''' Please use this type with <see cref="UnsafeOperators"/> and the <see langword="Using"/> statement.
     ''' </para>
     ''' </summary>
     Public Structure PinnedPointer(Of T)

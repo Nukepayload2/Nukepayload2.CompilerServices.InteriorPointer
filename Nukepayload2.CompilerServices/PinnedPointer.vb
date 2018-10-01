@@ -3,6 +3,9 @@
 Namespace Unsafe
     ''' <summary>
     ''' Contains a <see cref="IntPtr"/> and a <see cref="GCHandle"/> that pins the pointer's target object. 
+    ''' <para>
+    ''' Please use this type with <see cref="UnsafeOperators"/> and the <see langword="Using"/> statement.
+    ''' </para>
     ''' </summary>
     Public Structure PinnedPointer
         Implements IDisposable

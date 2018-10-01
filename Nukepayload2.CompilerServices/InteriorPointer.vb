@@ -2,21 +2,22 @@
 Imports Nukepayload2.CompilerServices.Unsafe
 
 ''' <summary>
-''' The non-typed interior pointer.
+''' The raw interior pointer. 
 ''' This type is an alternate of <see cref="Void"/>* in pointer algorithms.
 ''' <para>
-''' Caution: <see cref="InteriorPointer"/> may not work normally when used as 
+''' Caution: The <see cref="InteriorPointer"/> may lose its target if it's used as 
 ''' the data type of an array element,
 ''' field of class,
 ''' field of structure which is a field of class (directly or indirectly),
 ''' anonymous type member,
+''' generic type argument,
 ''' <see langword="Async"/> <see langword="Function"/> locals or argument,
 ''' <see langword="Async"/> <see langword="Sub"/> locals or argument,
 ''' <see langword="Iterator"/> <see langword="Function"/> locals or argument,
 ''' lambda expression locals or argument,
 ''' anonymous delegate locals or argument,
-''' locals of type (<see cref="Object"/> or <see cref="ValueType"/>),
-''' or parameter of type (<see cref="Object"/> or <see cref="ValueType"/>).
+''' locals as <see cref="Object"/> or <see cref="ValueType"/>,
+''' or parameters as <see cref="Object"/> or <see cref="ValueType"/>.
 ''' </para>
 ''' </summary>
 Public Structure InteriorPointer
