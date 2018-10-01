@@ -18,9 +18,9 @@
     <PackageId>Nukepayload2.CompilerServices.InteriorPointer</PackageId>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
-    <PackageTags>interior pointer unsafe vb vbnet byref</PackageTags>
-    <Version>1.0.2-beta4</Version>
-    <PackageReleaseNotes>Added pinned pointer.</PackageReleaseNotes>
+    <PackageTags>interior pointer unsafe vb vbnet byref memory varptr strptr objptr</PackageTags>
+    <Version>1.0.3-beta5</Version>
+    <PackageReleaseNotes>Added VarPtr, StrPtr, and ObjPtr.</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
     <AssemblyVersion>1.0.3.0</AssemblyVersion>
     <FileVersion>1.0.3.0</FileVersion>

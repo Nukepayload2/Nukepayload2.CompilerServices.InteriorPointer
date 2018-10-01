@@ -26,17 +26,37 @@ Namespace Unsafe
         ''' <summary>
         ''' Pins the specified array and gets a pointer to its first element.
         ''' </summary>
-        Public Function Fixed(Of T)(arr As T()) As PinnedPointer(Of T)
-            Dim hGc = GCHandle.Alloc(arr, GCHandleType.Pinned)
-            Return New PinnedPointer(Of T)(arr(0).UnsafeByRefToTypedPtr, hGc)
+        ''' <exception cref="ArgumentException"/>
+        ''' <exception cref="ArgumentNullException"/>
+        Public Function Fixed(Of T)(targetArray As T()) As PinnedPointer(Of T)
+            If targetArray Is Nothing Then
+                Throw New ArgumentNullException(NameOf(targetArray))
+            End If
+            If targetArray.Length = 0 Then
+                Throw New ArgumentException("Array is empty.", NameOf(targetArray))
+            End If
+            Dim hGc = GCHandle.Alloc(targetArray, GCHandleType.Pinned)
+            Return New PinnedPointer(Of T)(targetArray(0).UnsafeByRefToTypedPtr, hGc)
         End Function
 
         ''' <summary>
         ''' Pins the specified array and gets a pointer to the element at the specified startIndex.
         ''' </summary>
-        Public Function Fixed(Of T)(arr As T(), startIndex As Integer) As PinnedPointer(Of T)
-            Dim hGc = GCHandle.Alloc(arr, GCHandleType.Pinned)
-            Return New PinnedPointer(Of T)(arr(startIndex).UnsafeByRefToTypedPtr, hGc)
+        ''' <exception cref="ArgumentException"/>
+        ''' <exception cref="ArgumentNullException"/>
+        ''' <exception cref="ArgumentOutOfRangeException"/>
+        Public Function Fixed(Of T)(targetArray As T(), startIndex As Integer) As PinnedPointer(Of T)
+            If targetArray Is Nothing Then
+                Throw New ArgumentNullException(NameOf(targetArray))
+            End If
+            If targetArray.Length = 0 Then
+                Throw New ArgumentException("Array is empty.", NameOf(targetArray))
+            End If
+            If startIndex < 0 Then
+                Throw New ArgumentOutOfRangeException(NameOf(startIndex))
+            End If
+            Dim hGc = GCHandle.Alloc(targetArray, GCHandleType.Pinned)
+            Return New PinnedPointer(Of T)(targetArray(startIndex).UnsafeByRefToTypedPtr, hGc)
         End Function
 
         ''' <summary>
@@ -60,7 +80,12 @@ Namespace Unsafe
         ''' <summary>
         ''' Pins the specified string and gets a pointer to its first character.
         ''' </summary>
+        ''' <exception cref="ArgumentNullException"/>
         Public Function StrPtr(str As String) As PinnedPointer(Of Char)
+            If str?.Length = 0 Then
+                Throw New ArgumentNullException(NameOf(str))
+            End If
+
             Dim hGc = GCHandle.Alloc(str, GCHandleType.Pinned)
             Dim pPtr = StrPtrInternal(str)
             Return New PinnedPointer(Of Char)(pPtr, hGc)

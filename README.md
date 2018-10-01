@@ -12,7 +12,7 @@ Provides functionality for manipulating interior pointers with VB.
 ## Scenarios
 - Don't want to see small c# projects among your huge VB solution.
 - Prefer VB syntax and want to implement pointer algorithms.
-- Want to convert c# codes that contains `Span(Of T)` without marking everything `<Obsolete>`.
+- Want to convert c# codes that contain `Span(Of T)` without marking everything `<Obsolete>`.
 - Want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
@@ -101,3 +101,22 @@ Using pinPtr = StrPtr(values)
     ' use chrBuf
 End Using
 ```
+
+### Restrictions
+The `InteriorPointer` and the `InteriorPointer(Of T)` may lose their targets if they're used as 
+the data type of:
+- An array element
+- Field of class
+- Field of structure which is a field of class (directly or indirectly)
+- Anonymous type member
+- Generic type argument
+- `Async Function` locals or argument
+- `Async Sub` locals or argument
+- `Iterator Function` locals or argument
+- Lambda expression locals or argument
+- Anonymous delegate locals or argument
+- Locals as `Object` or `ValueType`
+- Parameters as `Object` or `ValueType`
+
+## Known issues
+- No compile-time checking for the unsafe use of `InteriorPointer` and `InteriorPointer(Of T)`.
