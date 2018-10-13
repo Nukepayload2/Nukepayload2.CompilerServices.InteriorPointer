@@ -12,7 +12,7 @@ Provides functionality for manipulating interior pointers with VB.
 ## Scenarios
 - Don't want to see small c# projects among your huge VB solution.
 - Prefer VB syntax and want to implement pointer algorithms.
-- Want to convert c# codes that contain `Span(Of T)` without marking everything `<Obsolete>`.
+- Want to convert c# codes that contain `Span(Of T)` , without marking everything `<Obsolete>`.
 - Want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
@@ -46,6 +46,7 @@ Provides functionality for manipulating interior pointers with VB.
 |C++ sample code|Remarks|InteriorPointer with VB|
 |-|-|-|
 |`auto u = static_cast<unsigned int>(signedValue)`|Converts objects that has the same size and memory layout.|Dim u = signedValue.UnsafeStaticCast(Of UInteger)|
+|`auto u = reinterpret_cast<cow*>(wind)`|Converts between irrelevant types.|Dim u = wind.UnsafeReinterpretCast(Of Cow)|
 
 ### C# pointer keywords to VB with InteriorPointer
 #### stackalloc
