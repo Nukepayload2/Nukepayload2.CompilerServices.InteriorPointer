@@ -32,7 +32,7 @@
         ret
     } // End Function
 
-	.method private static valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char> 
+	.method assembly static valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<char> 
         StrPtrInternal(string str) cil managed aggressiveinlining
 	{
 	    .maxstack 2

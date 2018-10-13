@@ -19,11 +19,11 @@
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref memory varptr strptr objptr</PackageTags>
-    <Version>1.0.3-beta5</Version>
+    <Version>1.0.4-beta6</Version>
     <PackageReleaseNotes>Added VarPtr, StrPtr, and ObjPtr.</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

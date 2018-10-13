@@ -5,16 +5,16 @@ Imports Nukepayload2.CompilerServices.Unsafe
 Public Class TestUnsafeConversions
 
     <TestMethod>
-    Sub TestUnsafeStaticCast()
+    Sub TestUnsafeReinterpretCast()
         Dim priObj As New ClassWithPrivates(12345)
-        Dim pubObj = priObj.UnsafeStaticCast(Of ClassWithPublics)
+        Dim pubObj = priObj.UnsafeReinterpretCast(Of ClassWithPublics)
         Assert.AreEqual(12345, pubObj._hiddenValue)
         pubObj._hiddenReadOnlyValue = 678
         Assert.AreEqual(678, priObj.HiddenReadOnlyValue)
     End Sub
 
     <TestMethod>
-    Sub TestUnsafeStaticCastWithInteriorPtr()
+    Sub TestCastWithInteriorPtr()
         Dim priObj As New ClassWithPrivates(12345)
         Dim pubObj = CType(priObj.UnsafeByRefToPtr, InteriorPointer(Of ClassWithPublics)).UnsafePtrToByRef
         Assert.AreEqual(12345, pubObj._hiddenValue)

@@ -252,6 +252,13 @@ Namespace Unsafe
         End Operator
 
         ''' <summary>
+        ''' This function is used to translate the (<typeparamref name="T"/>*)pointer expression.
+        ''' </summary>
+        Public Function StaticCast(Of T2)() As InteriorPointer(Of T2)
+            Return New InteriorPointer(Of T2)(Value)
+        End Function
+
+        ''' <summary>
         ''' This operator is used to translate the (<see cref="Void"/>*)pointer expression.
         ''' </summary>
         Public Shared Narrowing Operator CType(ptr As InteriorPointer(Of T)) As InteriorPointer

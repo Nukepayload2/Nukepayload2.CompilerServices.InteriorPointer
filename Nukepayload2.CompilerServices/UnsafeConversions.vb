@@ -1,3 +1,4 @@
+Imports System.ComponentModel
 Imports System.Runtime.CompilerServices
 
 Namespace Unsafe
@@ -5,9 +6,39 @@ Namespace Unsafe
         ''' <summary>
         ''' This method is used to translate the <see langword="static_cast"/>&lt;T&gt;(value) expression.
         ''' </summary>
+        <Obsolete("Use UnsafeReinterpretCast or other overloads instead.")>
+        <EditorBrowsable(EditorBrowsableState.Never)>
         <Extension>
         <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
         Public Function UnsafeStaticCast(Of TValue, TResult)(value As TValue) As TResult
+        End Function
+
+        ''' <summary>
+        ''' This method is used to translate the <see langword="static_cast"/>&lt;T&gt;(value) expression.
+        ''' </summary>
+        ''' <param name="sourceArray">This array should be pinned before using this method.</param>
+        <Extension>
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function UnsafeStaticCast(Of TElement)(sourceArray As TElement()) As InteriorPointer(Of TElement)
+            Return sourceArray(0).UnsafeByRefToTypedPtr
+        End Function
+
+        ''' <summary>
+        ''' This method is used to translate the <see langword="static_cast"/>&lt;T&gt;(value) expression.
+        ''' </summary>
+        ''' <param name="source">This string should be pinned before using this method.</param>
+        <Extension>
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function UnsafeStaticCast(source As String) As InteriorPointer(Of Char)
+            Return StrPtrInternal(source)
+        End Function
+
+        ''' <summary>
+        ''' This method is used to translate the <see langword="reinterpret_cast"/>&lt;T&gt;(value) expression.
+        ''' </summary>
+        <Extension>
+        <MethodImpl(MethodImplOptions.ForwardRef Or MethodImplOptions.AggressiveInlining)>
+        Public Function UnsafeReinterpretCast(Of TValue, TResult)(value As TValue) As TResult
         End Function
 
         ''' <summary>

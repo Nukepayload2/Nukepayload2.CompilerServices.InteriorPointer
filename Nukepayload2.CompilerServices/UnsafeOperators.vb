@@ -73,7 +73,7 @@ Namespace Unsafe
         ''' </summary>
         Public Function ObjPtr(Of T As Class)(variable As T) As PinnedPointer
             Dim hGc = GCHandle.Alloc(variable, GCHandleType.Pinned)
-            Dim pPtr = variable.UnsafeStaticCast(Of IntPtr)
+            Dim pPtr = variable.UnsafeReinterpretCast(Of IntPtr)
             Return New PinnedPointer(CType(pPtr, InteriorPointer), hGc)
         End Function
 
@@ -92,7 +92,7 @@ Namespace Unsafe
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining Or MethodImplOptions.ForwardRef)>
-        Private Function StrPtrInternal(str As String) As InteriorPointer(Of Char)
+        Friend Function StrPtrInternal(str As String) As InteriorPointer(Of Char)
         End Function
     End Module
 

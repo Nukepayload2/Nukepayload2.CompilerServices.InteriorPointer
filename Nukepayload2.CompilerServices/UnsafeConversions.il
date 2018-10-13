@@ -25,6 +25,25 @@
     ldloc.0
     ret // Return value
   } // End Function
+    
+  // Public Function UnsafeReinterpretCast(Of TValue, TResult)(value As TValue) As TResult
+  .method public static !!TResult UnsafeReinterpretCast<TValue,TResult>(
+    !!TValue 'value'
+  ) cil managed aggressiveinlining
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+        01 00 00 00
+    )
+    .maxstack 1
+    .locals init (
+      [0] !!TResult V_0
+    )
+    ldarg.0
+    // Roundtrip via a local to avoid type mismatch on return that the JIT inliner chokes on.
+    stloc.0
+    ldloc.0
+    ret // Return value
+  } // End Function
 
   // Public Function UnsafeByRefToPtr(Of TValue)(ByRef value As TValue) As InteriorPointer
   .method public static valuetype Nukepayload2.CompilerServices.InteriorPointer UnsafeByRefToPtr<TValue> (
