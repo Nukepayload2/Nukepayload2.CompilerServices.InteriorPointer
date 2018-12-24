@@ -1,9 +1,8 @@
-﻿Imports System.ComponentModel
-Imports System.Runtime.InteropServices
+﻿Imports System.Runtime.InteropServices
 
 Namespace Unsafe
     ''' <summary>
-    ''' Contains a <see cref="InteriorPointer(Of T)"/> and a <see cref="GCHandle"/> that pins the pointer's target object. 
+    ''' Contains a <see cref="TransientPointer(Of T)"/> and a <see cref="GCHandle"/> that pins the pointer's target object. 
     ''' This type is used to translate the <see langword="fixed"/> block.
     ''' <para>
     ''' Please use this type with <see cref="UnsafeOperators"/> and the <see langword="Using"/> statement.
@@ -12,10 +11,10 @@ Namespace Unsafe
     Public Structure PinnedPointer(Of T)
         Implements IDisposable
 
-        Public ReadOnly Pointer As InteriorPointer(Of T)
+        Public ReadOnly Pointer As TransientPointer(Of T)
         Friend Handle As GCHandle
 
-        Friend Sub New(pointer As InteriorPointer(Of T), handle As GCHandle)
+        Friend Sub New(pointer As TransientPointer(Of T), handle As GCHandle)
             Me.Pointer = pointer
             Me.Handle = handle
         End Sub
@@ -34,18 +33,20 @@ Namespace Unsafe
             Pointer.SetNothing()
         End Sub
 
-        <EditorBrowsable(EditorBrowsableState.Never)>
         Public Overrides Function Equals(obj As Object) As Boolean
-            Throw New NotSupportedException("You can't call this method on a pinned pointer.")
+            If TypeOf obj Is PinnedPointer(Of T) Then
+                Dim other = DirectCast(obj, PinnedPointer(Of T))
+                Return Pointer = other.Pointer AndAlso Handle = other.Handle
+            End If
+            Return False
         End Function
 
         Public Overloads Function Equals(other As PinnedPointer(Of T)) As Boolean
             Return Pointer = other.Pointer AndAlso Handle = other.Handle
         End Function
 
-        <EditorBrowsable(EditorBrowsableState.Never)>
         Public Overrides Function GetHashCode() As Integer
-            Throw New NotSupportedException("You can't call this method on a pinned pointer.")
+            Return Pointer.GetHashCode
         End Function
 
         Public Shared Operator =(left As PinnedPointer(Of T), right As PinnedPointer(Of T)) As Boolean

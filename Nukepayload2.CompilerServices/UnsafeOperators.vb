@@ -36,7 +36,7 @@ Namespace Unsafe
                 Throw New ArgumentException("Array is empty.", NameOf(targetArray))
             End If
             Dim hGc = GCHandle.Alloc(targetArray, GCHandleType.Pinned)
-            Return New PinnedPointer(Of T)(targetArray(0).UnsafeByRefToTypedPtr, hGc)
+            Return New PinnedPointer(Of T)(CType(hGc.AddrOfPinnedObject, TransientPointer(Of T)), hGc)
         End Function
 
         ''' <summary>
@@ -56,7 +56,7 @@ Namespace Unsafe
                 Throw New ArgumentOutOfRangeException(NameOf(startIndex))
             End If
             Dim hGc = GCHandle.Alloc(targetArray, GCHandleType.Pinned)
-            Return New PinnedPointer(Of T)(targetArray(startIndex).UnsafeByRefToTypedPtr, hGc)
+            Return New PinnedPointer(Of T)(CType(hGc.AddrOfPinnedObject, TransientPointer(Of T)), hGc)
         End Function
 
         ''' <summary>
@@ -92,7 +92,7 @@ Namespace Unsafe
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining Or MethodImplOptions.ForwardRef)>
-        Friend Function StrPtrInternal(str As String) As InteriorPointer(Of Char)
+        Friend Function StrPtrInternal(str As String) As TransientPointer(Of Char)
         End Function
     End Module
 

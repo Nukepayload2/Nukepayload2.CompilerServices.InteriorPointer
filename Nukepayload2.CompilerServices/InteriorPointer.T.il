@@ -140,7 +140,7 @@
 		ret
     }
 
-    .method public specialname instance void 
+    .method public instance void 
           SetUnmanagedItem(!T 'value') cil managed aggressiveinlining
     {
 		.maxstack 2

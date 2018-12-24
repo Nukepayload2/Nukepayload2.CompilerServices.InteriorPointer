@@ -85,9 +85,10 @@ Public Class TestUnsafeHelper
         Dim pStart = group.Color1.UnsafeByRefToTypedPtr
         Dim pEnd = group.Color4.UnsafeByRefToTypedPtr
         Dim pCurrent = pStart
+        pCurrent.UnsafePtrToByRef = green
         Do
             pCurrent.UnsafePtrToByRef = green
-        Loop While pCurrent.Assign(pCurrent + 1) < pEnd
+        Loop While pCurrent.IncrementAndGet < pEnd
         Assert.AreEqual(green, group.Color1)
         Assert.AreEqual(green, group.Color2)
         Assert.AreEqual(green, group.Color3)
@@ -170,5 +171,39 @@ Public Class TestUnsafeHelper
             Assert.AreEqual("u"c, pStr.GetAndIncrement.UnmanagedItem)
             Assert.AreEqual("b"c, pStr.GetAndIncrement.UnmanagedItem)
         End Using
+    End Sub
+
+    <TestMethod>
+    Public Sub TestObjPtr()
+        Dim str = "https://github.com/Nukepayload2"
+#Disable Warning BC42351
+        ' Local variable is read-only and its type is a structure. 
+        ' Invoking its members Or passing it ByRef does Not change its content And might lead to unexpected results. 
+        ' Consider declaring this variable outside of the 'Using' block.
+        Using hStr = StrPtr(str)
+            Using hObj = ObjPtr(str)
+#Enable Warning
+                Assert.IsTrue(hObj.Pointer < hStr.Pointer)
+            End Using
+        End Using
+    End Sub
+
+    <StructLayout(LayoutKind.Sequential, Size:=64)>
+    Public Structure Buffer64
+    End Structure
+
+    <TestMethod>
+    Public Sub TestStackAlloc()
+        Dim space As New Buffer64
+        Dim ptr As InteriorPointer(Of Byte) = space.UnsafeByRefToPtr
+        Dim ptrWrite = ptr
+        For i = 0 To 63
+            ptrWrite.GetAndIncrement.SetUnmanagedItem(i)
+        Next
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
+        For i = 0 To 63
+            Assert.AreEqual(CByte(i), ptr.GetAndIncrement.UnmanagedItem)
+        Next
     End Sub
 End Class

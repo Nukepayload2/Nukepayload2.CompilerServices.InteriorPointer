@@ -14,16 +14,19 @@
 - Load or store unmanaged values indirectly.
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
-- Provides helper functions for easier code conversion from C#, C++, or Classic VB to VB.NET.</Description>
+- Provides helper types and functions for easier code conversion from C#, C++, or Classic VB to VB.NET.
+- Runtime-check for InteriorPointer(Of T) is enabled.</Description>
     <PackageId>Nukepayload2.CompilerServices.InteriorPointer</PackageId>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref memory varptr strptr objptr</PackageTags>
-    <Version>1.0.4-beta6</Version>
-    <PackageReleaseNotes>Added VarPtr, StrPtr, and ObjPtr.</PackageReleaseNotes>
+    <Version>1.1.2-beta7</Version>
+    <PackageReleaseNotes>Added transient pointer.
+Added runtime byref-like check for InteriorPointer and InteriorPointer(Of T).
+Replaced InteriorPointer with TransientPointer in PinnedPointer.</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-    <FileVersion>1.0.4.0</FileVersion>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

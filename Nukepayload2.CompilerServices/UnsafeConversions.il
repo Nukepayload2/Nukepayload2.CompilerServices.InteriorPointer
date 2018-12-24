@@ -138,5 +138,25 @@
 	ldloc.0
 	newobj instance void [netstandard]System.String::.ctor(char*)
 	ret
-  }
+  } // End Function
+
+  .method public static string UnsafeToString (
+      valuetype Nukepayload2.CompilerServices.Unsafe.TransientPointer`1<char> ptr
+  ) cil managed aggressiveinlining 
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+        01 00 00 00
+    )
+    .locals init (
+        [0] void* addr
+    )
+	.maxstack 1
+    ldarg.0
+	ldfld native int valuetype Nukepayload2.CompilerServices.Unsafe.TransientPointer`1<char>::Value
+	stloc.0
+	ldloc.0
+	newobj instance void [netstandard]System.String::.ctor(char*)
+	ret
+  } // End Function
+
 } // End Module

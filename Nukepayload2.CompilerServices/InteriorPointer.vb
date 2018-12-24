@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Runtime.CompilerServices
 Imports Nukepayload2.CompilerServices.Unsafe
 
 ''' <summary>
@@ -17,9 +18,11 @@ Imports Nukepayload2.CompilerServices.Unsafe
 ''' lambda expression locals or argument,
 ''' anonymous delegate locals or argument,
 ''' locals as <see cref="Object"/> or <see cref="ValueType"/>,
+''' <see langword="Static"/> locals,
 ''' or parameters as <see cref="Object"/> or <see cref="ValueType"/>.
 ''' </para>
 ''' </summary>
+<IsByRefLike>
 Public Structure InteriorPointer
     Friend Value As IntPtr
 

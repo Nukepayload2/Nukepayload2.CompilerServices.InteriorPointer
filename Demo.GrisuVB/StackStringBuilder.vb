@@ -1,6 +1,8 @@
-﻿Imports Nukepayload2.CompilerServices
+﻿Imports System.Runtime.CompilerServices
+Imports Nukepayload2.CompilerServices
 Imports Nukepayload2.CompilerServices.Unsafe
 
+<IsByRefLike>
 Friend Structure StackStringBuilder
     Private ReadOnly _backBuffer As InteriorPointer(Of Char)
     Private _currentPosition As InteriorPointer(Of Char)

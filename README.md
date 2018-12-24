@@ -8,7 +8,8 @@ Provides functionality for manipulating interior pointers with VB.
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
 - Provides helper functions for easier code conversion from C#, C++, or Classic VB to VB.NET.
-
+- Runtime-check for InteriorPointer(Of T) is enabled.
+ 
 ## Scenarios
 - Don't want to see small c# projects among your huge VB solution.
 - Prefer VB syntax and want to implement pointer algorithms.
@@ -118,6 +119,7 @@ the data type of:
 - Anonymous delegate locals or argument
 - Locals as `Object` or `ValueType`
 - Parameters as `Object` or `ValueType`
+- `Static` locals
 
 ## Known issues
 - No compile-time checking for the unsafe use of `InteriorPointer` and `InteriorPointer(Of T)`.
