@@ -17,6 +17,14 @@ Provides functionality for manipulating interior pointers with VB.
 - Want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
+
+### Commonly used types
+Nukepayload2.CompilerServices.InteriorPointer
+Nukepayload2.CompilerServices.Unsafe.InteriorPointer(Of T)
+Nukepayload2.CompilerServices.Unsafe.UnsafeOperators
+Nukepayload2.CompilerServices.Unsafe.PinnedPointer(Of T)
+Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)
+
 ### C-style operators vs InteriorPointer members
 
 |C# sample code|Remarks|InteriorPointer with VB|
@@ -61,7 +69,7 @@ __VB__
 Structure StackAllocChar50
 End Structure
 
-Dim chrBuf = CType(resultBufValue.UnsafeByRefToPtr, InteriorPointer(Of Char))
+Dim chrBuf As InteriorPointer(Of Char) = resultBufValue.UnsafeByRefToPtr
 ```
 
 #### fixed
@@ -102,6 +110,65 @@ Using pinPtr = StrPtr(values)
     Dim chrBuf = pinPtr.Pointer
     ' use chrBuf
 End Using
+```
+
+##### ref struct
+
+__C#__
+```C#
+public ref struct StackStringBuilder {}
+```
+
+__VB__
+```VB
+Namespace Global.System.Runtime.CompilerServices
+    <CompilerGenerated>
+    <Embedded>
+    Friend NotInheritable Class IsByRefLikeAttribute
+        Inherits Attribute
+        Public Sub New()
+            MyBase.New()
+        End Sub
+    End Class
+End Namespace
+
+<IsByRefLike>
+Public Structure StackStringBuilder
+End Structure
+```
+
+##### readonly ref struct
+
+__C#__
+```C#
+public readonly ref struct StackString {}
+```
+
+__VB__
+```VB
+Namespace Global.System.Runtime.CompilerServices
+    <CompilerGenerated>
+    <Embedded>
+    Friend NotInheritable Class IsByRefLikeAttribute
+        Inherits Attribute
+        Public Sub New()
+            MyBase.New()
+        End Sub
+    End Class
+
+    <CompilerGenerated>
+    <Embedded>
+    Friend NotInheritable Class IsReadOnlyAttribute
+        Inherits Attribute
+        Public Sub New()
+            MyBase.New()
+        End Sub
+    End Class
+End Namespace
+
+<IsByRefLike, IsReadOnly>
+Public Structure StackString
+End Structure
 ```
 
 ### Restrictions

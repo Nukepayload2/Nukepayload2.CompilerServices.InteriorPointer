@@ -15,7 +15,14 @@
 - No extra dependencies.
 - Supports addition, subtraction, increment, decrement, equality, inequality, greater than, greater than or equal, less than, and less than or equal operator.
 - Provides helper types and functions for easier code conversion from C#, C++, or Classic VB to VB.NET.
-- Runtime-check for InteriorPointer(Of T) is enabled.</Description>
+- Runtime-check for the use of InteriorPointer(Of T) is enabled.
+
+Commonly used types:
+Nukepayload2.CompilerServices.InteriorPointer
+Nukepayload2.CompilerServices.Unsafe.InteriorPointer(Of T)
+Nukepayload2.CompilerServices.Unsafe.UnsafeOperators
+Nukepayload2.CompilerServices.Unsafe.PinnedPointer(Of T)
+Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
     <PackageId>Nukepayload2.CompilerServices.InteriorPointer</PackageId>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
