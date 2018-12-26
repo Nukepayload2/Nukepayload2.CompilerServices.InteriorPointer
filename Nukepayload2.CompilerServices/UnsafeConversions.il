@@ -159,4 +159,234 @@
 	ret
   } // End Function
 
+
+  	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] int8& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+
+		.maxstack 2
+
+		ldarg.1 // ByRef result
+		ldarg.0 // ByRef result, value
+		conv.i1 // ByRef result, CByte(value)
+		stind.i1 // *result = CByte(value)
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] uint8& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.u1
+        stind.i1
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] int16& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.i2
+        stind.i2
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] uint16& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.u2
+        stind.i2
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] int32& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.i4
+        stind.i4
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] uint32& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.u4
+        stind.i4
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] int64& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.i8
+        stind.i8
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] uint64& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.u8
+        stind.i8
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<TSrc> (
+			!!TSrc 'value',
+			[out] native int& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.i
+        stind.i
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<TSrc> (
+			!!TSrc 'value',
+			[out] native uint& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.u
+        stind.i
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] float32& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.r4
+        stind.r4
+
+		ret
+	} // End Sub
+
+	.method public static 
+		void UnsafeStaticCast<valuetype .ctor ([mscorlib]System.ValueType) TSrc> (
+			!!TSrc 'value',
+			[out] float64& result
+		) cil managed aggressiveinlining
+	{
+		.custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = (
+			01 00 00 00
+		)
+		.maxstack 2
+
+        ldarg.1
+        ldarg.0
+        conv.r8
+        stind.r8
+
+		ret
+	} // End Sub
+
 } // End Module

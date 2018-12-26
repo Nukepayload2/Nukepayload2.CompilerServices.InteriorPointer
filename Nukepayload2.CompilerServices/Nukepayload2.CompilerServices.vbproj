@@ -27,13 +27,11 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
     <Authors>Nukepayload2</Authors>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref memory varptr strptr objptr</PackageTags>
-    <Version>1.1.2-beta7</Version>
-    <PackageReleaseNotes>Added transient pointer.
-Added runtime byref-like check for InteriorPointer and InteriorPointer(Of T).
-Replaced InteriorPointer with TransientPointer in PinnedPointer.</PackageReleaseNotes>
+    <Version>1.1.3-beta8</Version>
+    <PackageReleaseNotes>Added some useful static casts</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <AssemblyVersion>1.1.3.0</AssemblyVersion>
+    <FileVersion>1.1.3.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
