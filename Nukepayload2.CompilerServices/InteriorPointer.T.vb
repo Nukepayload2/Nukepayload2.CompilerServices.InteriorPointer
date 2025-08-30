@@ -57,6 +57,13 @@ Namespace Unsafe
         End Function
 
         ''' <summary>
+        ''' Gets the address value.
+        ''' </summary>
+        Public Overrides Function ToString() As String
+            Return Value.ToString
+        End Function
+
+        ''' <summary>
         ''' This method is used to translate the pointer == <see langword="nullptr"/> expression.
         ''' </summary>
         Public ReadOnly Property IsZero As Boolean

@@ -117,11 +117,8 @@
           get_UnmanagedItem() cil managed aggressiveinlining
     {
         .maxstack 1
-		.locals (!T*)
         ldarg.0 // Me^
-        ldfld native int valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!T>::Value // Me.Value
-		stloc.0
-		ldloc.0
+        ldind.i // Me.Value
 		ldobj !T
 		ret
     }
@@ -130,12 +127,9 @@
           set_UnmanagedItem(!T 'value') cil managed aggressiveinlining
     {
 		.maxstack 2
-		.locals (!T*)
         ldarg.0 // Me^
-        ldfld native int valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!T>::Value // Me.Value
-		stloc.0
-		ldloc.0
-		ldarg.1 // pValue, other
+        ldind.i // Me.Value
+		ldarg.1 // Me.Value, value
         stobj !T
 		ret
     }
@@ -144,11 +138,8 @@
           SetUnmanagedItem(!T 'value') cil managed aggressiveinlining
     {
 		.maxstack 2
-		.locals (!T*)
         ldarg.0 // Me^
-        ldfld native int valuetype Nukepayload2.CompilerServices.Unsafe.InteriorPointer`1<!T>::Value // Me.Value
-		stloc.0
-		ldloc.0
+        ldind.i // Me.Value
 		ldarg.1 // pValue, other
         stobj !T
 		ret

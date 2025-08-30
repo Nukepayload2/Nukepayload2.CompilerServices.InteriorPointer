@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PerformanceCompare</RootNamespace>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nukepayload2.CompilerServices\Nukepayload2.CompilerServices.vbproj" />
+    <ProjectReference Include="..\PerformanceCompare.CSharpFeatures\PerformanceCompare.CSharpFeatures.csproj" />
+  </ItemGroup>
+
+</Project>
