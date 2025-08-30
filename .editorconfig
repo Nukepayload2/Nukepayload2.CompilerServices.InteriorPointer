@@ -1,0 +1,4 @@
+﻿[*.vb]
+
+# BCX31396: 受限类型使用
+dotnet_diagnostic.BCX31396.severity = warning
