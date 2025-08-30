@@ -51,6 +51,12 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
     <IL Include="**\*.il" Exclude="**\obj\**\*.il;**\bin\**\*.il" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Nukepayload2.CodeAnalysis.ExtendRestrictedTypes" Version="1.0.2-beta">
+      <IncludeAssets>analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <Target Name="ProcessILAfterCompile" AfterTargets="Compile">
     <CallTarget Targets="InitializeIL; CoreDecompile; CoreCompileIL" />
   </Target>
@@ -60,27 +66,15 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
       <ILResourceFile>@(IntermediateAssembly->'%(RootDir)%(Directory)%(Filename).res', ' ')</ILResourceFile>
     </PropertyGroup>
   </Target>
+  <PropertyGroup>
+    <NetFxToolsFolder>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\</NetFxToolsFolder>
+    <SystemNetFxToolsFolder>C:\Windows\Microsoft.NET\Framework\v4.0.30319\</SystemNetFxToolsFolder>
+    <ILAsmExe>$(SystemNetFxToolsFolder)ilasm.exe</ILAsmExe>
+    <ILDAsmExe>$(NetFxToolsFolder)ildasm.exe</ILDAsmExe>
+  </PropertyGroup>
   <Target Name="CoreDecompile" Inputs="@(IntermediateAssembly)" Outputs="$(ILFile)" Condition=" Exists ( @(IntermediateAssembly) ) ">
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="FrameworkSdkPath" />
-    </GetFrameworkSdkPath>
     <PropertyGroup>
-      <ILDasm>"$(FrameworkSdkPath)bin\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
-    </PropertyGroup>
-    <PropertyGroup Condition=" Exists ( '$(FrameworkSdkPath)bin\NETFX 4.0 Tools\ildasm.exe' ) ">
-      <ILDasm>"$(FrameworkSdkPath)bin\NETFX 4.0 Tools\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
-    </PropertyGroup>
-    <PropertyGroup Condition=" Exists ( '$(FrameworkSdkPath)bin\NETFX 4.5.1 Tools\ildasm.exe' ) ">
-      <ILDasm>"$(FrameworkSdkPath)bin\NETFX 4.5.1 Tools\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
-    </PropertyGroup>
-    <PropertyGroup Condition=" Exists ( '$(FrameworkSdkPath)bin\NETFX 4.6 Tools\ildasm.exe' ) ">
-      <ILDasm>"$(FrameworkSdkPath)bin\NETFX 4.6 Tools\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
-    </PropertyGroup>
-    <PropertyGroup Condition=" Exists ( '$(FrameworkSdkPath)bin\NETFX 4.6.1 Tools\ildasm.exe' ) ">
-      <ILDasm>"$(FrameworkSdkPath)bin\NETFX 4.6.1 Tools\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
-    </PropertyGroup>
-    <PropertyGroup Condition=" Exists ( '$(FrameworkSdkPath)bin\NETFX 4.6.2 Tools\ildasm.exe' ) ">
-      <ILDasm>"$(FrameworkSdkPath)bin\NETFX 4.6.2 Tools\ildasm.exe" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
+      <ILDasm>"$(ILDAsmExe)" /nobar /linenum /output:"$(ILFile)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILDasm>
     </PropertyGroup>
     <Exec Command="$(ILDasm)" />
     <ItemGroup>
@@ -102,11 +96,8 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
     <Delete Files="@(IntermediateAssembly)" />
   </Target>
   <Target Name="CoreCompileIL" Inputs="@(IL)" Outputs="@(IntermediateAssembly)">
-    <GetFrameworkPath>
-      <Output TaskParameter="Path" PropertyName="FrameworkPath" />
-    </GetFrameworkPath>
     <PropertyGroup>
-      <ILAsm>"$(FrameworkPath)\ilasm.exe" /nologo /quiet /output:@(IntermediateAssembly->'"%(FullPath)"', ' ')</ILAsm>
+      <ILAsm>"$(ILAsmExe)" /nologo /quiet /output:@(IntermediateAssembly->'"%(FullPath)"', ' ')</ILAsm>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(FileAlignment)' != '' ">
       <ILAsm>$(ILAsm) /alignment=$(FileAlignment)</ILAsm>

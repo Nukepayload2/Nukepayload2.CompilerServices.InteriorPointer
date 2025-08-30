@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
+Imports System.Reflection
 
 Namespace Unsafe
 
@@ -87,13 +88,11 @@ Namespace Unsafe
             End If
 
             Dim hGc = GCHandle.Alloc(str, GCHandleType.Pinned)
-            Dim pPtr = StrPtrInternal(str)
+            Dim pPtr As TransientPointer(Of Char) = hGc.AddrOfPinnedObject
+
             Return New PinnedPointer(Of Char)(pPtr, hGc)
         End Function
 
-        <MethodImpl(MethodImplOptions.AggressiveInlining Or MethodImplOptions.ForwardRef)>
-        Friend Function StrPtrInternal(str As String) As TransientPointer(Of Char)
-        End Function
     End Module
 
 End Namespace

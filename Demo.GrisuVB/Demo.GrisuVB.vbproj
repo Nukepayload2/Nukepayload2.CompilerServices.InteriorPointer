@@ -3,12 +3,19 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>Demo.GrisuVB</RootNamespace>
-    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <TargetFrameworks>net9.0;net461</TargetFrameworks>
     <OptionStrict>On</OptionStrict>
     <NoWarn />
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Nukepayload2.CodeAnalysis.ExtendRestrictedTypes" Version="1.0.2-beta">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>

@@ -1,6 +1,5 @@
 ﻿Namespace Global.System.Runtime.CompilerServices
     <CompilerGenerated>
-    <Embedded>
     Friend NotInheritable Class IsByRefLikeAttribute
         Inherits Attribute
         Public Sub New()
@@ -9,7 +8,6 @@
     End Class
 
     <CompilerGenerated>
-    <Embedded>
     Friend NotInheritable Class IsReadOnlyAttribute
         Inherits Attribute
         Public Sub New()

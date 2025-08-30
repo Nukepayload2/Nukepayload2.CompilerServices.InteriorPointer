@@ -15,20 +15,22 @@ Module Program
             addrOfPinnedObject = pinPtr.Pointer
         End Using
         Console.WriteLine("Type of the test subject is String")
-        Console.WriteLine($"VarPtr = {addrOfVariable}")
-        Console.WriteLine($"StrPtr = {addrOfFirstChar}")
-        Console.WriteLine($"ObjPtr = {addrOfPinnedObject}")
+        Console.WriteLine($"VarPtr = &H{addrOfVariable.ToInt64:X}")
+        Console.WriteLine($"StrPtr = &H{addrOfFirstChar.ToInt64:X}")
+        Console.WriteLine($"ObjPtr = &H{addrOfPinnedObject.ToInt64:X}")
 
         Dim testArray = testString.ToCharArray
         addrOfVariable = VarPtr(testArray)
+        Dim firstElementRef = VarPtr(testArray(0))
         Dim firstElement As IntPtr
         Using pinPtr = Fixed(testArray)
             firstElement = pinPtr.Pointer
             addrOfPinnedObject = ObjPtr(testArray).Pointer
         End Using
         Console.WriteLine("Type of the test subject is SZArray")
-        Console.WriteLine($"VarPtr = {addrOfVariable}")
-        Console.WriteLine($"Fixed  = {firstElement}")
-        Console.WriteLine($"ObjPtr = {addrOfPinnedObject}")
+        Console.WriteLine($"VarPtr = &H{addrOfVariable.ToInt64:X}")
+        Console.WriteLine($"Fixed  = &H{firstElement.ToInt64:X}")
+        Console.WriteLine($"ByRef array(0)  = &H{CType(firstElementRef, IntPtr).ToInt64:X}")
+        Console.WriteLine($"ObjPtr = &H{addrOfPinnedObject.ToInt64:X}")
     End Sub
 End Module
