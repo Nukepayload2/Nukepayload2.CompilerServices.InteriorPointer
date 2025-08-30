@@ -4,7 +4,7 @@ Imports Nukepayload2.CompilerServices.Unsafe
 
 Module Program
     Sub Main(args As String())
-        BenchmarkRunner.Run(GetType(ArrayAccess), GetType(StringAccess))
+        BenchmarkRunner.Run({GetType(ArrayAccess), GetType(StringAccess)})
     End Sub
 End Module
 
@@ -42,7 +42,7 @@ Public Class ArrayAccess
     End Sub
 
     <Benchmark>
-    Public Sub ForEachVarPtrArray()
+    Public Sub ForEachVarPtr()
         Dim data = VarPtr(_testData(0))
         Dim ch As Char
         For i = 1 To LoopCount
@@ -80,7 +80,7 @@ Public Class StringAccess
     End Sub
 
     <Benchmark>
-    Public Sub ForEachStrPtrArray()
+    Public Sub ForEachStrPtr()
         Dim pin = StrPtr(_testData)
         Dim data = pin.Pointer
         Dim ch As Char
