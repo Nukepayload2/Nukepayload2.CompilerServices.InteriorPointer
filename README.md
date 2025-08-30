@@ -189,4 +189,4 @@ the data type of:
 - `Static` locals
 
 ## Known issues
-- No compile-time checking for the unsafe use of `InteriorPointer` and `InteriorPointer(Of T)`.
+- The compile-time checking for the unsafe use of `InteriorPointer` and `InteriorPointer(Of T)` is incomplete. For more information, see [VBRefStructHelper](https://github.com/Nukepayload2/VBRefStructHelper).
