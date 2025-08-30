@@ -8,7 +8,7 @@
     <RepositoryUrl>https://github.com/Nukepayload2/Nukepayload2.CompilerServices.InteriorPointer.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/Nukepayload2/Nukepayload2.CompilerServices.InteriorPointer</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/Nukepayload2/Nukepayload2.CompilerServices.InteriorPointer/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Description>Provides functionality for manipulating interior pointers with VB.
 - Convert ByRef to interior pointer, or convert interior pointer back to ByRef.
 - Load or store unmanaged values indirectly.
@@ -35,7 +35,7 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
 
   <!-- Package -->
   <ItemGroup>
-    <None Include="..\README.md" Pack="True" PackagePath="readme.md"/>
+    <None Include="..\README.md" Pack="True" PackagePath="readme.md" />
   </ItemGroup>
 
   <ItemGroup>
