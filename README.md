@@ -11,10 +11,10 @@ Provides functionality for manipulating interior pointers with VB.
 - Runtime-check for InteriorPointer(Of T) is enabled.
  
 ## Scenarios
-- Don't want to see small c# projects among your huge VB solution.
-- Prefer VB syntax and want to implement pointer algorithms.
-- Want to convert c# codes that contain `Span(Of T)` , without marking everything `<Obsolete>`.
-- Want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
+- You don't want to see small c# projects among your huge VB solution.
+- You prefer VB syntax and want to implement pointer algorithms.
+- You want to convert c# codes that contain `Span(Of T)` , without marking everything `<Obsolete>`.
+- You want to bring Classic VB codes which have `VarPtr` and `StrPtr` to .NET.
 
 ## Guides
 

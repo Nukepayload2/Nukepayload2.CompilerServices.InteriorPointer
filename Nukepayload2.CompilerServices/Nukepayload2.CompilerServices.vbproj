@@ -28,22 +28,15 @@ Nukepayload2.CompilerServices.Unsafe.TransientPointer(Of T)</Description>
     <Product>Nukepayload2.CompilerServices.InteriorPointer</Product>
     <PackageTags>interior pointer unsafe vb vbnet byref memory varptr strptr objptr</PackageTags>
     <Version>1.2.0-rc1</Version>
-    <PackageReleaseNotes>Fixed StrPtr for .NET 8.0 and bundled analyzer for interior pointer</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed StrPtr for .NET 8.0 and bundled analyzer for interior pointers</PackageReleaseNotes>
     <Copyright>Copyright 2018 Nukepayload2</Copyright>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
-    <DocumentationFile>Nukepayload2.CompilerServices.xml</DocumentationFile>
-    <NoWarn>42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
-    <WarningsAsErrors />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Nukepayload2.CompilerServices.xml</DocumentationFile>
-    <NoWarn>42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
-    <WarningsAsErrors />
-  </PropertyGroup>
+  <!-- Package -->
+  <ItemGroup>
+    <None Include="..\README.md" Pack="True" PackagePath="readme.md"/>
+  </ItemGroup>
 
   <ItemGroup>
     <IL Include="**\*.il" Exclude="**\obj\**\*.il;**\bin\**\*.il" />
